@@ -1,0 +1,10 @@
+.wrapper {
+    max-width: 1320px;
+    margin: 0 auto;
+}
+
+::ng-deep {
+    mat-card {
+        width: 100%;
+    }
+}
