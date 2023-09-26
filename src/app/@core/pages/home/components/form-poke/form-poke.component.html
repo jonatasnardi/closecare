@@ -1,0 +1,32 @@
+<app-title [title]="isEditing ? 'Editar' : 'Adicionar'"></app-title>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <mat-form-field class="full-width">
+        <mat-label>Nome</mat-label>
+        <input matInput placeholder="Nome" formControlName="name">
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+        <mat-select multiple formControlName="abilities" placeholder="Habilidades">
+            <mat-option *ngFor="let ability of abilities" [value]="ability">
+                {{ ability }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-checkbox [checked]="isTypeEnabled" class="checkbox-type" (change)="onChangeEnableType($event.checked)">Habilitar tipo</mat-checkbox>
+
+    <mat-form-field>
+        <mat-label>Tipo</mat-label>
+        <mat-select [disabled]="!isTypeEnabled" formControlName="type" >
+          <mat-option *ngFor="let type of types" [value]="type.value">
+            {{ type.viewValue }}
+          </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <div class="box-buttons">
+        <button class="btn-cancel" mat-stroked-button color="primary" type="button" (click)="onCancel()">Cancelar</button>
+        <button class="btn-submit" [disabled]="!form.valid" mat-raised-button color="primary" type="submit">{{ isEditing ? 'Editar' : 'Adicionar' }}</button>
+    </div>
+</form>

@@ -1,15 +1,17 @@
-<mat-grid-list cols="1" rowHeight="2:1">
+<mat-grid-list cols="1" rowHeight="1:1">
     <mat-grid-tile>
         <mat-card>
             <mat-card-content>
                 <app-title [title]="'Listagem'"></app-title>
+
+                <button class="btn-add" mat-raised-button color="primary" (click)="onAddItem()">Adicionar</button>
 
                 <mat-table #table [dataSource]="dataSource">
                     <!-- Position Column -->
                     <ng-container matColumnDef="image">
                         <mat-header-cell *matHeaderCellDef> Imagem </mat-header-cell>
                         <mat-cell *matCellDef="let element"> 
-                            <img [src]="element.image">
+                            <img class="thumb-poke" [src]="element.image">
                         </mat-cell>
                     </ng-container>
                 
@@ -32,9 +34,14 @@
                     </ng-container>
                 
                     <!-- Symbol Column -->
-                    <ng-container matColumnDef="actions">
-                      <mat-header-cell *matHeaderCellDef> Ações </mat-header-cell>
-                      <mat-cell *matCellDef="let element">  </mat-cell>
+                    <ng-container matColumnDef="action">
+                      <mat-header-cell *matHeaderCellDef> Ação </mat-header-cell>
+                      <mat-cell *matCellDef="let element">
+                        <div class="btn-edit" (click)="onEditItem(element)">
+                            <mat-icon>edit</mat-icon>
+                            <span>Editar</span>
+                        </div>
+                      </mat-cell>
                     </ng-container>
                 
                     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

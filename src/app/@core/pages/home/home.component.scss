@@ -1,0 +1,21 @@
+.thumb-poke {
+    max-width: 80px;
+}
+
+.btn-add {
+    position: absolute;
+    right: 10px;
+    top: 20px;
+}
+
+.btn-edit {
+    cursor: pointer;
+    color: #3f51b5;
+
+    span {
+        position: relative;
+        top: -6px;
+        left: 5px;
+        font-weight: bold;
+    }
+}
